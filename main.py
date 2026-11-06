@@ -15,7 +15,7 @@ def main():
     print("Width:",width);
     print("Color Channels:",channels);
     print("Pixel type:",img.dtype);
-    conv.blur(img_output)
+    conv.sharpen(img_output)
     imageio.imwrite("output.png",img_output)
 
 main()

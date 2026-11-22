@@ -5,8 +5,7 @@ def convolution(img, conv_matrix,row_col_size,img_y,img_x, apply_on_alpha):
     result_add = 0
     result_sub = 0
     offset = int(row_col_size/2)
-    if(row_col_size%2 == 1):
-        offset = int((row_col_size-1)/2)
+
     for y in range(row_col_size):
         for x in range(row_col_size):
             if(conv_matrix[y,x] > 0):
@@ -31,7 +30,7 @@ def image_filter(img,conv_matrix,row_col_size,apply_on_alpha):
 def box_blur(img,intensity):
     row_col_size = 2*max(intensity,0)+1
     blur_matrix = numpy.ones((row_col_size,row_col_size))/(row_col_size*row_col_size)
-    return image_filter(img,blur_matrix,row_col_size)
+    return image_filter(img,blur_matrix,row_col_size,True)
 
 
 def sharpen(img):

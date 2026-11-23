@@ -9,6 +9,7 @@ from scale import scale_img
 import convolution_filters as conv
 import tkinter
 from tkinter import ttk
+import fourier_filters as fourier
 
 import PIL
 def main():
@@ -38,21 +39,24 @@ def main():
     img_PIL = PIL.Image.fromarray(img)
     # should resize
     img_tk = PIL.ImageTk.PhotoImage(img_PIL)
-    img_label = tkinter.Label(root, image=img_tk)
+    img_label = tkinter.Label(root, image=img_tk,compound=tkinter.BOTTOM,text="Original")
     img_label.pack(pady=80)
 
 
 
     # show image output
     img_output = img.copy()
-    conv.box_blur(img_output,4)
+  #  img_output = fourier.high_pass(img_output)
+    conv.box_blur(img_output,1)
+  #  conv.box_blur(img_output,4)
     out_img_PIL = PIL.Image.fromarray(img_output)
     out_img_tk = PIL.ImageTk.PhotoImage(out_img_PIL)
-    out_img_label = tkinter.Label(root, image=out_img_tk)
+    out_img_label = tkinter.Label(root, image=out_img_tk,compound=tkinter.BOTTOM,text="Box Blur")
     out_img_label.pack(pady=180)
 
 
     root.mainloop()
+    
     '''
     img = imageio.imread("input2.png")
     height, width, channels = img.shape

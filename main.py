@@ -40,19 +40,19 @@ def main():
     # should resize
     img_tk = PIL.ImageTk.PhotoImage(img_PIL)
     img_label = tkinter.Label(root, image=img_tk,compound=tkinter.BOTTOM,text="Original")
-    img_label.pack(pady=80)
+    img_label.pack(pady=20)
 
 
 
     # show image output
     img_output = img.copy()
   #  img_output = fourier.high_pass(img_output)
-    conv.box_blur(img_output,1)
-  #  conv.box_blur(img_output,4)
+   # conv.sharpen(img_output)
+    conv.sharpen(img_output)
     out_img_PIL = PIL.Image.fromarray(img_output)
     out_img_tk = PIL.ImageTk.PhotoImage(out_img_PIL)
-    out_img_label = tkinter.Label(root, image=out_img_tk,compound=tkinter.BOTTOM,text="Box Blur")
-    out_img_label.pack(pady=180)
+    out_img_label = tkinter.Label(root, image=out_img_tk,compound=tkinter.BOTTOM,text="Sharpen")
+    out_img_label.pack(pady=100)
 
 
     root.mainloop()
